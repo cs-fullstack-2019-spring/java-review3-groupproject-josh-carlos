@@ -14,15 +14,13 @@ public class CreateUser {
         try
         {
 
-            String myDriver = "org.gjt.mm.mysql.Driver";
+
             String myUrl = "jdbc:postgresql://138.197.107.95:5432/group3";
-            Class.forName(myDriver);
             Connection conn = DriverManager.getConnection(myUrl, "root", "");
 
             String query = " insert into messengerdata.public.usertable(username, password)"
                     + " values (?, ?)";
             PreparedStatement preparedStmt = conn.prepareStatement(query);
-
 
             preparedStmt.execute();
 
