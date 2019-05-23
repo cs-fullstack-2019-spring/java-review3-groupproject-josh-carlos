@@ -9,27 +9,25 @@ public class CreateUser {
 
     HashMap<String, String> users = new HashMap<String, String>();
 
-    public static void adduser(String[] args)
-    {
-        try
-        {
-
-
-            String myUrl = "jdbc:postgresql://138.197.107.95:5432/group3";
-            Connection conn = DriverManager.getConnection(myUrl, "root", "");
-
-            String query = " insert into messengerdata.public.usertable(username, password)"
-                    + " values (?, ?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(query);
-
-            preparedStmt.execute();
-
-            conn.close();
-        }
-        catch (Exception e)
-        {
-            System.err.println("Error");
-            System.err.println(e.getMessage());
+    public static void newUser(String username, String password) throws SQLException {
+        String insertSQL = "INSERT INTO messengerdata.public.usertable(username,password) VALUES(?,?)";
+        Connection conn = null;
+        PreparedStatement AddAUser = null;
+        try {
+            AddAUser = conn.prepareStatement(insertSQL);
+            AddAUser.setString(1, username);
+            AddAUser.setString(2, password);
+            int rs = AddAUser.executeUpdate();
+            System.out.println(rs);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (AddAUser != null) {
+                AddAUser.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
     }
 }
