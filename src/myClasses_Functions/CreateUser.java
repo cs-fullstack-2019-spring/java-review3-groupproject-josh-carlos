@@ -1,6 +1,5 @@
 package myClasses_Functions;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.sql.*;
 
 
@@ -9,10 +8,10 @@ public class CreateUser {
 
     HashMap<String, String> users = new HashMap<String, String>();
 
-    public static void newUser(String username, String password) throws SQLException {
+    public static CreateUser newUser(String username, String password) throws SQLException {
         String insertSQL = "INSERT INTO messengerdata.public.usertable(username,password) VALUES(?,?)";
-        Connection conn = null;
-        PreparedStatement AddAUser = null;
+        Connection conn=null;
+        PreparedStatement AddAUser=null;
         try {
             AddAUser = conn.prepareStatement(insertSQL);
             AddAUser.setString(1, username);
@@ -29,6 +28,7 @@ public class CreateUser {
                 conn.close();
             }
         }
+        return null;
     }
 }
 

@@ -6,9 +6,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-//        Scanner newUser = new Scanner();
+        Scanner promptUser = new Scanner(System.in);
         CreateUser x = new CreateUser();
         System.out.println(x);
+        String test = promptUser.next();
 
 
         System.out.println("Hello World!");
@@ -16,7 +17,14 @@ public class Main {
         System.out.println(blank);
         System.out.println();
         try {
-            CreateUser.newUser("carlos", "test4321");
+            System.out.println("Enter username: ");
+            String word = promptUser.nextLine();
+            CreateUser user2 = CreateUser.newUser("carlos", "test4321");
+            CreateUser user1 = CreateUser.newUser("Thaddeus", "Blue");
+            System.out.println(user1);
+            System.out.println(user2);
+            System.out.println(CreateUser.newUser("theo","good"));
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
