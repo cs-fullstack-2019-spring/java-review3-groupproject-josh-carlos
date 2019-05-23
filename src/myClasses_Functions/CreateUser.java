@@ -1,25 +1,43 @@
 package myClasses_Functions;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.sql.*;
+
 
 
 public class CreateUser {
 
-    String username;
-    String password;
+    HashMap<String, String> users = new HashMap<String, String>();
 
-    System.out.println("Create a username:");
-    username = s.nextLine();
-    System.out.println("Create a password:");
-    password = s.nextLine();
+    public static void adduser(String[] args)
+    {
+        try
+        {
+
+            String myDriver = "org.gjt.mm.mysql.Driver";
+            String myUrl = "jdbc:postgresql://138.197.107.95:5432/group3";
+            Class.forName(myDriver);
+            Connection conn = DriverManager.getConnection(myUrl, "root", "");
+
+            String query = " insert into messengerdata.public.usertable(username, password)"
+                    + " values (?, ?)";
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
 
 
-//    if (username != null && username.length() > 0) {
-//        // Get password
-//        System.out.println("Enter password for " + username + ":");
-//        password = console.readLine();
+            preparedStmt.execute();
 
-
-
-
+            conn.close();
+        }
+        catch (Exception e)
+        {
+            System.err.println("Error");
+            System.err.println(e.getMessage());
+        }
+    }
 }
+
+
+
+
+
 
