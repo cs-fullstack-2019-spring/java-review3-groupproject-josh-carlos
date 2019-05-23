@@ -1,5 +1,6 @@
 import myClasses_Functions.*;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,5 +14,11 @@ public class Main {
         System.out.println("Hello World!");
         message blank = new message();
         System.out.println(blank);
+        System.out.println();
+        try {
+            CreateUser.newUser("carlos", "test4321");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

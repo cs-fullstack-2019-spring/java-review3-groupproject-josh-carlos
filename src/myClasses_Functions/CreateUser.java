@@ -35,6 +35,7 @@ public class CreateUser {
             AddAUser.setString(1, username);
             AddAUser.setString(2, password);
             int rs = AddAUser.executeUpdate();
+            System.out.println(rs);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {

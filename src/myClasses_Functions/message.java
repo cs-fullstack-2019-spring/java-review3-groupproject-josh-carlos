@@ -13,6 +13,8 @@ public class message{
     public String body;
     private Integer fromuserid;
     private Integer sentuserid;
+    private Timestamp datetimesent;
+
     public static Connection connect() {
         Connection conn = null;
         try {
