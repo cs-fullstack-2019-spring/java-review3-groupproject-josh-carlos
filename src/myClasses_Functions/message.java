@@ -8,13 +8,6 @@ public class message{
     private final static String user = "student";
     private final static String password = "C0d3Cr3w";
 
-//    private Integer mailid;
-//    public String subject;
-//    public String body;
-//    private Integer fromuserid;
-//    private Integer sentuserid;
-//    private Timestamp datetimesent;
-
     public static Connection connect() {
         Connection conn = null;
         try {

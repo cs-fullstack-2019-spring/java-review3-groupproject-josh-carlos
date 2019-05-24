@@ -55,7 +55,8 @@ public class CreateUser {
 //            System.out.println(rs);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-        } finally {
+        }
+        finally {
             if (AddAUser != null) {
                 AddAUser.close();
             }
