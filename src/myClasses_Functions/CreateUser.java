@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class CreateUser {
 
-    private final static String url = "jdbc:postgresql://138.197.107.95:5432/group3";
+    private final static String url = "jdbc:postgresql://138.197.107.95:5432/messengerdata";
     private final static String username = "student";
     private final static String password = "C0d3Cr3w";
 
@@ -29,16 +29,28 @@ public class CreateUser {
 
     public static void newUser( Connection conn) throws SQLException {
         Scanner promptUser = new Scanner(System.in);
-        String insertSQL = "INSERT INTO messengerdata.public.usertable(username,password) VALUES(?,?)";
+//        String username;
+//        String password;
+        String insertSQL = "INSERT INTO usertable(username,password) VALUES(?,?)";
         PreparedStatement AddAUser = null;
         try {
             AddAUser = conn.prepareStatement(insertSQL);
-            System.out.println("Enter username: ");
+
 
             AddAUser.setString(1, username);
             AddAUser.setString(2, password);
-            String test = promptUser.nextLine();
-            System.out.println(test);
+            System.out.println("Enter username: ");
+            String test1 = promptUser.nextLine();
+            System.out.println("Enter password: ");
+            String test2 = promptUser.nextLine();
+            if(test1!=null && test2!=null){
+                System.out.println("You are now registered "+username);
+                System.out.println(password);
+            }
+            else{
+                System.out.println("Error");
+            }
+            System.out.println(test1);
             int rs = AddAUser.executeUpdate();
             System.out.println(rs);
         } catch (Exception ex) {
