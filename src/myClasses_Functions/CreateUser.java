@@ -29,30 +29,30 @@ public class CreateUser {
 
     public static void newUser( Connection conn) throws SQLException {
         Scanner promptUser = new Scanner(System.in);
-//        String username;
-//        String password;
+//        String username="";
+//        String password="";
         String insertSQL = "INSERT INTO usertable(username,password) VALUES(?,?)";
         PreparedStatement AddAUser = null;
         try {
             AddAUser = conn.prepareStatement(insertSQL);
-
-
-            AddAUser.setString(1, username);
-            AddAUser.setString(2, password);
             System.out.println("Enter username: ");
             String test1 = promptUser.nextLine();
             System.out.println("Enter password: ");
             String test2 = promptUser.nextLine();
+
             if(test1!=null && test2!=null){
-                System.out.println("You are now registered "+username);
-                System.out.println(password);
+                AddAUser.setString(1, test1);
+                AddAUser.setString(2, test2);
+                System.out.println("You are now registered "+test1);
+//                System.out.println(password);
+                AddAUser.executeUpdate();
             }
             else{
                 System.out.println("Error");
             }
-            System.out.println(test1);
-            int rs = AddAUser.executeUpdate();
-            System.out.println(rs);
+//            System.out.println(test1);
+//            int rs = AddAUser.executeUpdate();
+//            System.out.println(rs);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         } finally {
